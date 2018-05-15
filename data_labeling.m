@@ -221,7 +221,7 @@ if isempty(handles.label_folder)
  else
   
  end
-handles.labels_filename = [handles.label_folder,'\labels_',label_file_name ,'.csv'];
+handles.labels_filename = [handles.label_folder,'/',label_file_name,'_',handles.sensor_SN(4:end),'.csv'];
 
 global labellist;
 try
@@ -1033,6 +1033,8 @@ handles = loadExistingLabels(accel_file_name,handles);
 % if(or(handles.accel_times(1)>handles.videostarttime,handles.accel_times(end)<handles.videostoptime))
 %     warndlg('Accelerometer data not available for entire video length','Warning');
 % end
+handles.line_tick=1;
+handles = plotTimeandLabels(handles);
 
 set(handles.accel_file_text,'String',strcat('accel:',{' '},accel_file_name(1:end-4)));
 set(handles.select_video_button,'Enable','on');
