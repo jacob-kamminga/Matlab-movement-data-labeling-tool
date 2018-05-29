@@ -1,6 +1,5 @@
 function concattedAnimals = concatAnimals(segmentsPerLabel1,segmentsPerLabel2)
 
-
 pos_fields = fieldnames(segmentsPerLabel1);
 pos_fields2 = fieldnames(segmentsPerLabel2);
 nr_of_pos = length(pos_fields);

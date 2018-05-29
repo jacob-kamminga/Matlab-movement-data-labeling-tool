@@ -1,4 +1,3 @@
-
 function segments = collectSegmentsPerLabel(label_filepath,sensor_filepath,srs,max_lenght_segments,filter)
 %% Grab all label files
 cd(label_filepath); 
@@ -46,7 +45,7 @@ for file = files'
 end
 %% Save in sensor data folder of this day
 % only used for visual inspection (see Dropbox\Measurements Enschede\Data Labelling App\visualize data for checking labels\visualize_labeled_data_v3.m)
-save([sensor_filepath,'\segmentsPerLabel.mat'],'segments');
+%save([sensor_filepath,'\segmentsPerLabel.mat'],'segments');
 
 end
 
@@ -57,10 +56,10 @@ function ret = selectSensorSubset(segments)
     for i=1:length(label_fields)
         if isstruct(segments.(label_fields{i}))
             %% add sensors you want here 
-            ret.(label_fields{i}).accel_3dvector_norm = segments.(label_fields{i}).accel_3dvector_norm; 
-            ret.(label_fields{i}).gyro_3dvector_norm = segments.(label_fields{i}).gyro_3dvector_norm;
+%             ret.(label_fields{i}).accel_3dvector_norm = segments.(label_fields{i}).accel_3dvector_norm; 
+%             ret.(label_fields{i}).gyro_3dvector_norm = segments.(label_fields{i}).gyro_3dvector_norm;
         else
-            ret.(label_fields{i}) = {};
+%             ret.(label_fields{i}) = {};
         end
     end
 end

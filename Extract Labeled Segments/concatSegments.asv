@@ -26,12 +26,12 @@ try
         elseif isstruct(Segments2.(Fboth{i}))
             subfields = fieldnames(Segments2.(Fboth{i}));
         else
-            % Its not a struct, hmm than it should at leat be identical
+            % Its not a struct, hmm than it should at leat be ident
             if Segments1.(Fboth{i}) == Segments2.(Fboth{i})
                 concattedSegments.(Fboth{i}) = Segments1.(Fboth{i});
                 continue;
             else
-                error('Element not a struct but not identical');
+                error('Horse ID not identical');
             end
         end
         

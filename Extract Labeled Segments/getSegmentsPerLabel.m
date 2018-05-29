@@ -72,7 +72,7 @@ for i=1:height(labellist)
     % file
     if i==height(labellist)
         from=labellist.label_ticks(i);
-        to=accelFileLength;
+        to= height(data);
     else
         from=labellist.label_ticks(i);
         to=labellist.label_ticks(i+1);
