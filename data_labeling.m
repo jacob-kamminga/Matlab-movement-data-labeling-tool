@@ -621,6 +621,10 @@ global frameskip;
 global multiplier;
 
 switch eventdata.Key
+    case 'rightarrow'
+        frameskip =  round(handles.jump_time * handles.video.Framerate);
+    case 'leftarrow'
+         frameskip = round(-handles.jump_time * handles.video.Framerate);
     case 'leftbracket'
         frameskip = round(-handles.jump_time * handles.video.Framerate);
     case 'rightbracket'
@@ -1388,7 +1392,7 @@ function rethandles = storeSensorOffset(handles)
         offsets.offset(oi) = handles.sensor_offset;
     else
         % offset not know, so add it
-        offsets=[offsets;{offsetID,handles.sensor_offset,datestr(handles.accelRefTime,'yyyymmdd')}]; 
+        offsets=[offsets;{offsetID,handles.sensor_offset,['day_',datestr(handles.accelRefTime,'yyyymmdd')]}]; 
     end
     writetable(offsets,[handles.label_folder,'\sensor_camera_offsets.csv']);
 rethandles=handles;       
