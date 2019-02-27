@@ -1,29 +1,31 @@
 clear all;
 close all;
 addpath('.'); % add current folder to Matlab Search Path
-addpath('..\Extract Labeled Segments');
+addpath('..\..\Prepare data mining');
+addpath('..\Export labeled data');
 
 %% Setup
-% sensordata_filepath = ['F:\Measurements Horstlinde\25-04-2018\Sensordata\10. Happy'];
-% sensordata_filepath = ['C:\Data Horstslinde\25-04-2017\Sensordata\10. Happy'];
-%sensordata_filepath = 'C:\Data Horstslinde\25-04-2017\Sensordata\3. Galoway';
-sensordata_filepath = uigetdir('C:\Measurements Horstlinde\25-04-2017\Sensordata');
+label_filepath='C:\Dropbox\Measurements Horstlinde\Labels';
+sensordata_filepath = uigetdir('F:\Measurements Horstlinde\15-05-2018\Sensordata');
+% sensordata_filepath = 'C:\Measurements Horstlinde\25-04-2018\Sensordata\12. Noortje';
 if  sensordata_filepath == 0
     return
 end
-label_filepath='C:\Dropbox\Measurements Horstlinde\Labels';
+
 srs=100;
 max_lenght_segments=1e10;
 filter=false;
 always_resegment=true;
-
+labellist = getLabellist(label_filepath);
 %% Collect segments per activity
 if exist([sensordata_filepath,'\segmentsPerLabel.mat'], 'file') == 2 && ~always_resegment
     warning(['Using exisiting sensor data, is this up to date? ',sensordata_filepath]);
     load([sensordata_filepath,'\segmentsPerLabel.mat']);
 else
-    segments = collectSegmentsPerLabel(label_filepath,sensordata_filepath,srs,max_lenght_segments,filter);
-    save([sensordata_filepath,'\segmentsPerLabel.mat'],'segments');
+    segments = collectSegmentsPerLabel(labellist,sensordata_filepath,srs,max_lenght_segments,filter);
+    if ~always_resegment
+        save([sensordata_filepath,'\segmentsPerLabel.mat'],'segments');
+    end
 end
 pos_ids = {'A','B','C','D','E','F'};
 srs =100; % Hz

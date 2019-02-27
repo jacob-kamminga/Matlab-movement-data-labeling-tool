@@ -2,7 +2,7 @@ function varargout = data_labeling(varargin)
 % DATA_LABELING MATLAB code for data_labeling.fig
 %      DATA_LABELING, by itself, creates a new DATA_LABELING or raises the existing
 %      singleton*.
-%
+% f
 %      H = DATA_LABELING returns the handle to a new DATA_LABELING or the handle to
 %      the existing singleton*.
 %
@@ -1111,6 +1111,7 @@ function label_folder_edit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of label_folder_edit as text
 %        str2double(get(hObject,'String')) returns contents of label_folder_edit as a double
+saveState(handles);
 
 
 % --- Executes during object creation, after setting all properties.
@@ -1127,6 +1128,7 @@ end
 
 
 
+
 function video_folder_edit_Callback(hObject, eventdata, handles)
 % hObject    handle to video_folder_edit (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -1134,7 +1136,7 @@ function video_folder_edit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of video_folder_edit as text
 %        str2double(get(hObject,'String')) returns contents of video_folder_edit as a double
-
+saveState(handles);
 
 % --- Executes during object creation, after setting all properties.
 function video_folder_edit_CreateFcn(hObject, eventdata, handles)
@@ -1147,6 +1149,7 @@ function video_folder_edit_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
 
 function saveState(handles)
 
@@ -1180,7 +1183,7 @@ function sensor_folder_edit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of sensor_folder_edit as text
 %        str2double(get(hObject,'String')) returns contents of sensor_folder_edit as a double
-
+saveState(handles);
 
 % --- Executes during object creation, after setting all properties.
 function sensor_folder_edit_CreateFcn(hObject, eventdata, handles)
@@ -1212,6 +1215,7 @@ function label_folder_push_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 handles.label_folder = uigetdir(get(handles.label_folder_edit,'String'));
  set(handles.label_folder_edit, 'string',  handles.label_folder);
+ saveState(handles);
 
 % --- Executes on button press in video_folder_push.
 function video_folder_push_Callback(hObject, eventdata, handles)
@@ -1224,6 +1228,7 @@ if answer == 0
 end
 handles.video_folder = answer;
  set(handles.video_folder_edit, 'string',  handles.video_folder);
+ saveState(handles);
 
 % --- Executes on button press in sensor_folder_push.
 function sensor_folder_push_Callback(hObject, eventdata, handles)
@@ -1232,6 +1237,7 @@ function sensor_folder_push_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 handles.sensor_folder = uigetdir(get(handles.sensor_folder_edit,'String'));
  set(handles.sensor_folder_edit, 'string',  handles.sensor_folder);
+ saveState(handles);
 
 
 % --- Executes on button press in modify_video_time.
