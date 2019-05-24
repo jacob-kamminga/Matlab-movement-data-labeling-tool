@@ -1,8 +1,11 @@
 clear all;
 close all;
-addpath('.'); % add current folder to Matlab Search Path
-addpath('..\..\Prepare data mining');
-addpath('..\Export labeled data');
+mfilepath = fileparts(mfilename('fullpath'));
+addpath(genpath(fullfile(mfilepath,'../matlab_scripts')));
+
+addpath(genpath(fullfile(mfilepath))); % add current folder to Matlab Search Path
+addpath(genpath(fullfile(mfilepath,'..\other functions')));
+addpath(genpath(fullfile(mfilepath,'..\Export labeled data')));
 
 %% Setup
 label_filepath='C:\Dropbox\Measurements Horstlinde\Labels';
