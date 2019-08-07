@@ -1,3 +1,5 @@
+%% This script plots datasegments that have been labeled so that they can be inspected
+
 clear all;
 close all;
 mfilepath = fileparts(mfilename('fullpath'));
