@@ -7,7 +7,7 @@ function labellist = getLabellist(label_filepath)
 
     for file = files'
         try
-            hID = getHorseID(file.name);
+            hID = getSubjectID(file.name);
             l = readtable(file.name);
             hc = cell2table(repmat({hID},height(l),1),'VariableNames',{'hID'});
             labellist = [labellist;l,hc];

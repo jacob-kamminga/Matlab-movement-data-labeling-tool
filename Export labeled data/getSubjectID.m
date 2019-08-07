@@ -1,4 +1,7 @@
-function hID = getHorseID(filename)
+function hID = getSubjectID(filename)
+% Lookup table wtih subject name and sensor ID
+% This function must be customized to the sensor data file
+
 
 IDTABLE = cell2table({
 'Viva',	'CCDC3016AE9D6B4';
@@ -20,6 +23,8 @@ IDTABLE = cell2table({
 });
 IDTABLE.Properties.VariableNames = {'name','SN'};
 idx = strfind(filename,'_');
+%% Parse sensorID from datafile
+% This is custom to the sensor device
 SN = filename(idx(2)+1:end-4);
 hID = IDTABLE.name(strcmp(IDTABLE.SN,SN));
 hID = hID{1};
